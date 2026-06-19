@@ -86,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const exportCsvBtn = document.getElementById('export-csv-btn');
   const chartCardWrapper = document.getElementById('chart-card-wrapper');
   const trendsCanvas = document.getElementById('trends-chart');
+  const calculationWarning = document.getElementById('calculation-warning');
   
   // Accordions
   const accordionHeaders = document.querySelectorAll('.accordion-header');
@@ -662,6 +663,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let honors = "No";
     
     if (gpa > 0) {
+      if (calculationWarning) calculationWarning.classList.remove('hidden');
       if (univ.maxGpa === 10) {
         if (gpa >= 9.0) {
           rating = "Outstanding";
@@ -709,6 +711,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } else {
       gaugeProgress.style.stroke = "var(--divider)";
+      if (calculationWarning) calculationWarning.classList.add('hidden');
     }
     
     ratingVal.textContent = rating;
