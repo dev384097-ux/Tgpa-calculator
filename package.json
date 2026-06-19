@@ -1,0 +1,22 @@
+{
+  "name": "tgpa-cgpa-calculator",
+  "version": "1.0.0",
+  "description": "A premium, responsive university SGPA/TGPA and CGPA calculator with custom university grading scales.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "gpa",
+    "cgpa",
+    "tgpa",
+    "sgpa",
+    "calculator",
+    "lpu",
+    "aktu",
+    "cu"
+  ],
+  "author": "Antigravity Dev Team",
+  "license": "MIT"
+}

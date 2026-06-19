@@ -1,0 +1,32 @@
+/* ==========================================================================
+   UniCalc Premium Styles System - Imports Core
+   ========================================================================= */
+
+@import url('themes.css');
+@import url('layout.css');
+@import url('components.css');
+@import url('gauge.css');
+@import url('print.css');
+
+/* ==========================================================================
+   Resilient Offline Fallbacks (Lucide icons failover)
+   ========================================================================== */
+i:has(svg)::after {
+  display: none !important;
+}
+
+[data-lucide="trash"]::after { content: "🗑️"; font-size: 1.1rem; }
+[data-lucide="plus"]::after { content: "➕"; }
+[data-lucide="graduation-cap"]::after { content: "🎓"; font-size: 1.5rem; }
+[data-lucide="school"]::after { content: "🏫"; }
+[data-lucide="palette"]::after { content: "🎨"; }
+[data-lucide="moon"]::after { content: "🌙"; }
+[data-lucide="sun"]::after { content: "☀️"; }
+[data-lucide="info"]::after { content: "ℹ️"; }
+[data-lucide="layout-grid"]::after { content: "📊"; }
+[data-lucide="trending-up"]::after { content: "📈"; }
+[data-lucide="refresh-cw"]::after { content: "🔄"; }
+[data-lucide="download"]::after { content: "📥"; }
+[data-lucide="file-spreadsheet"]::after { content: "📁"; }
+[data-lucide="bar-chart-3"]::after { content: "📊"; }
+[data-lucide="chevron-down"]::after { content: "▼"; font-size: 0.7rem; }

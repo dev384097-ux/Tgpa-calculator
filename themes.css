@@ -1,0 +1,339 @@
+/* ==========================================================================
+   UniCalc Themes, Variables & Global Resets
+   ========================================================================== */
+
+:root {
+  /* Dark Mode Variables (Default) - Aurora Cyber Palette */
+  --bg-primary: #050515;
+  --bg-secondary: #0a0a24;
+  --card-bg: rgba(10, 10, 30, 0.7);
+  --card-border: rgba(168, 85, 247, 0.15);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --primary: #a855f7;
+  --primary-hover: #9333ea;
+  --primary-glow: rgba(168, 85, 247, 0.35);
+  --secondary: #00f2fe;
+  --secondary-glow: rgba(0, 242, 254, 0.25);
+  --success: #10b981;
+  --success-glow: rgba(16, 185, 129, 0.2);
+  --danger: #ef4444;
+  --danger-glow: rgba(239, 68, 68, 0.2);
+  --warning: #f59e0b;
+  
+  --divider: rgba(168, 85, 247, 0.08);
+  --input-bg: rgba(5, 5, 20, 0.7);
+  --input-border: rgba(168, 85, 247, 0.15);
+  --input-focus-border: #00f2fe;
+  --input-focus-shadow: rgba(0, 242, 254, 0.25);
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.25), 0 10px 10px -5px rgba(0, 0, 0, 0.15);
+  --glass-blur: 16px;
+}
+
+[data-theme="light"] {
+  /* Light Mode Variables */
+  --bg-primary: #faf8ff;
+  --bg-secondary: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(168, 85, 247, 0.08);
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --primary: #7e22ce;
+  --primary-hover: #6b21a8;
+  --primary-glow: rgba(126, 34, 206, 0.15);
+  --secondary: #0284c7;
+  --secondary-glow: rgba(2, 132, 199, 0.15);
+  --success: #16a34a;
+  --success-glow: rgba(22, 163, 74, 0.15);
+  --danger: #dc2626;
+  --danger-glow: rgba(220, 38, 38, 0.15);
+  --warning: #d97706;
+  
+  --divider: rgba(0, 0, 0, 0.06);
+  --input-bg: #ffffff;
+  --input-border: rgba(0, 0, 0, 0.12);
+  --input-focus-border: #7e22ce;
+  --input-focus-shadow: rgba(126, 34, 206, 0.12);
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* ==========================================================================
+   UniCalc Custom Theme Palettes
+   ========================================================================== */
+
+/* --- Cyberpunk (Aurora Cyber) --- */
+[data-palette="cyberpunk"] {
+  --bg-primary: #050515;
+  --bg-secondary: #0a0a24;
+  --card-bg: rgba(10, 10, 30, 0.7);
+  --card-border: rgba(168, 85, 247, 0.15);
+  --primary: #a855f7;
+  --primary-hover: #9333ea;
+  --primary-glow: rgba(168, 85, 247, 0.35);
+  --secondary: #00f2fe;
+  --secondary-glow: rgba(0, 242, 254, 0.25);
+  --divider: rgba(168, 85, 247, 0.08);
+  --input-bg: rgba(5, 5, 20, 0.7);
+  --input-border: rgba(168, 85, 247, 0.15);
+  --input-focus-border: #00f2fe;
+  --input-focus-shadow: rgba(0, 242, 254, 0.25);
+}
+[data-theme="light"][data-palette="cyberpunk"] {
+  --bg-primary: #faf8ff;
+  --bg-secondary: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(168, 85, 247, 0.08);
+  --primary: #7e22ce;
+  --primary-hover: #6b21a8;
+  --primary-glow: rgba(126, 34, 206, 0.15);
+  --secondary: #0284c7;
+  --secondary-glow: rgba(2, 132, 199, 0.15);
+  --divider: rgba(0, 0, 0, 0.06);
+  --input-bg: #ffffff;
+  --input-border: rgba(0, 0, 0, 0.12);
+  --input-focus-border: #7e22ce;
+  --input-focus-shadow: rgba(126, 34, 206, 0.12);
+}
+
+/* --- Sunset Sapphire --- */
+[data-palette="sunset"] {
+  --bg-primary: #020817;
+  --bg-secondary: #090f24;
+  --card-bg: rgba(9, 15, 36, 0.7);
+  --card-border: rgba(59, 130, 246, 0.15);
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --primary-glow: rgba(59, 130, 246, 0.35);
+  --secondary: #ff7e40;
+  --secondary-glow: rgba(255, 126, 64, 0.25);
+  --divider: rgba(59, 130, 246, 0.08);
+  --input-bg: rgba(2, 8, 23, 0.7);
+  --input-border: rgba(59, 130, 246, 0.15);
+  --input-focus-border: #ff7e40;
+  --input-focus-shadow: rgba(255, 126, 64, 0.25);
+}
+[data-theme="light"][data-palette="sunset"] {
+  --bg-primary: #f0f6ff;
+  --bg-secondary: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(59, 130, 246, 0.08);
+  --primary: #1d4ed8;
+  --primary-hover: #1e40af;
+  --primary-glow: rgba(29, 78, 216, 0.15);
+  --secondary: #ea580c;
+  --secondary-glow: rgba(234, 88, 12, 0.15);
+  --divider: rgba(0, 0, 0, 0.06);
+  --input-bg: #ffffff;
+  --input-border: rgba(0, 0, 0, 0.12);
+  --input-focus-border: #1d4ed8;
+  --input-focus-shadow: rgba(29, 78, 216, 0.12);
+}
+
+/* --- Emerald Forest --- */
+[data-palette="forest"] {
+  --bg-primary: #020d0a;
+  --bg-secondary: #041712;
+  --card-bg: rgba(4, 23, 18, 0.7);
+  --card-border: rgba(16, 185, 129, 0.15);
+  --primary: #10b981;
+  --primary-hover: #059669;
+  --primary-glow: rgba(16, 185, 129, 0.35);
+  --secondary: #00f5d4;
+  --secondary-glow: rgba(0, 245, 212, 0.25);
+  --divider: rgba(16, 185, 129, 0.08);
+  --input-bg: rgba(2, 13, 10, 0.7);
+  --input-border: rgba(16, 185, 129, 0.15);
+  --input-focus-border: #00f5d4;
+  --input-focus-shadow: rgba(0, 245, 212, 0.25);
+}
+[data-theme="light"][data-palette="forest"] {
+  --bg-primary: #e6fcf5;
+  --bg-secondary: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(16, 185, 129, 0.08);
+  --primary: #047857;
+  --primary-hover: #065f46;
+  --primary-glow: rgba(4, 120, 87, 0.15);
+  --secondary: #0f766e;
+  --secondary-glow: rgba(15, 118, 110, 0.15);
+  --divider: rgba(0, 0, 0, 0.06);
+  --input-bg: #ffffff;
+  --input-border: rgba(0, 0, 0, 0.12);
+  --input-focus-border: #047857;
+  --input-focus-shadow: rgba(4, 120, 87, 0.12);
+}
+
+/* --- Velvet Orchid --- */
+[data-palette="velvet"] {
+  --bg-primary: #090211;
+  --bg-secondary: #120522;
+  --card-bg: rgba(18, 5, 34, 0.7);
+  --card-border: rgba(217, 70, 239, 0.15);
+  --primary: #f43f5e;
+  --primary-hover: #e11d48;
+  --primary-glow: rgba(244, 63, 94, 0.35);
+  --secondary: #d946ef;
+  --secondary-glow: rgba(217, 70, 239, 0.25);
+  --divider: rgba(217, 70, 239, 0.08);
+  --input-bg: rgba(9, 2, 17, 0.7);
+  --input-border: rgba(217, 70, 239, 0.15);
+  --input-focus-border: #d946ef;
+  --input-focus-shadow: rgba(217, 70, 239, 0.25);
+}
+[data-theme="light"][data-palette="velvet"] {
+  --bg-primary: #fff1f2;
+  --bg-secondary: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(217, 70, 239, 0.08);
+  --primary: #a21caf;
+  --primary-hover: #86198f;
+  --primary-glow: rgba(162, 28, 175, 0.15);
+  --secondary: #6d28d9;
+  --secondary-glow: rgba(109, 40, 217, 0.15);
+  --divider: rgba(0, 0, 0, 0.06);
+  --input-bg: #ffffff;
+  --input-border: rgba(0, 0, 0, 0.12);
+  --input-focus-border: #a21caf;
+  --input-focus-shadow: rgba(162, 28, 175, 0.12);
+}
+
+/* --- Classic Prestige --- */
+[data-palette="gold"] {
+  --bg-primary: #070708;
+  --bg-secondary: #0d0d11;
+  --card-bg: rgba(13, 13, 17, 0.7);
+  --card-border: rgba(212, 163, 89, 0.15);
+  --primary: #d4a373;
+  --primary-hover: #c38e5b;
+  --primary-glow: rgba(212, 163, 89, 0.35);
+  --secondary: #e5e5e7;
+  --secondary-glow: rgba(229, 229, 231, 0.25);
+  --divider: rgba(212, 163, 89, 0.08);
+  --input-bg: rgba(7, 7, 8, 0.7);
+  --input-border: rgba(212, 163, 89, 0.15);
+  --input-focus-border: #d4a373;
+  --input-focus-shadow: rgba(212, 163, 89, 0.25);
+}
+[data-theme="light"][data-palette="gold"] {
+  --bg-primary: #fafaf9;
+  --bg-secondary: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(212, 163, 89, 0.08);
+  --primary: #b45309;
+  --primary-hover: #92400e;
+  --primary-glow: rgba(180, 83, 9, 0.15);
+  --secondary: #475569;
+  --secondary-glow: rgba(71, 85, 105, 0.15);
+  --divider: rgba(0, 0, 0, 0.06);
+  --input-bg: #ffffff;
+  --input-border: rgba(0, 0, 0, 0.12);
+  --input-focus-border: #b45309;
+  --input-focus-shadow: rgba(180, 83, 9, 0.12);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Inter', 'Outfit', sans-serif;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Background Glow Effects */
+.glow-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.15;
+  transition: opacity 0.5s ease;
+}
+
+[data-theme="light"] .glow-orb {
+  opacity: 0.07;
+}
+
+.orb-1 {
+  width: 500px;
+  height: 500px;
+  top: -10%;
+  right: -10%;
+  background: radial-gradient(circle, var(--primary) 0%, transparent 80%);
+  animation: orbFloat 25s infinite alternate;
+}
+
+.orb-2 {
+  width: 600px;
+  height: 600px;
+  bottom: -20%;
+  left: -10%;
+  background: radial-gradient(circle, var(--secondary) 0%, transparent 80%);
+  animation: orbFloat 35s infinite alternate-reverse;
+}
+
+.orb-3 {
+  width: 400px;
+  height: 400px;
+  top: 40%;
+  left: 45%;
+  background: radial-gradient(circle, var(--success) 0%, transparent 80%);
+  animation: orbFloat 20s infinite alternate;
+}
+
+@keyframes orbFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -50px) scale(1.1); }
+  100% { transform: translate(-20px, 30px) scale(0.95); }
+}
+
+/* Theme Toggle Button Icon Visibility */
+[data-theme="dark"] .theme-icon-light {
+  display: none !important;
+}
+[data-theme="light"] .theme-icon-dark {
+  display: none !important;
+}

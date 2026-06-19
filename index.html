@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UniCalc | Premium University SGPA & CGPA Calculator</title>
+  <meta name="description" content="Calculate SGPA, TGPA, and CGPA based on specific grading systems of LPU, Chandigarh University, AKTU, Delhi University, Mumbai University, VTU, and more. Convert CGPA to percentage instantly.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Custom SVG Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%238b5cf6'/%3E%3Cstop offset='100%25' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='url(%23g)'/%3E%3Cpath d='M50 20 L76 28 V52 C76 66 65 77 50 81 C35 77 24 66 24 52 V28 Z' fill='none' stroke='white' stroke-width='5' stroke-linejoin='round'/%3E%3Cpath d='M50 34 L70 42 L50 50 L30 42 Z' fill='white'/%3E%3Cpath d='M38 45 V54 C38 58 43 60 50 60 C57 60 62 58 62 54 V45' fill='none' stroke='white' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+</head>
+<body>
+  <!-- Onboarding Welcome Screen -->
+  <div id="welcome-screen" class="welcome-screen fade-out">
+    <div class="welcome-card card">
+      <div class="welcome-header">
+        <button id="close-welcome-btn" class="welcome-close-btn" aria-label="Close Selector">
+          <i data-lucide="x"></i>
+        </button>
+        <div class="welcome-logo-icon">
+          <svg viewBox="0 0 100 100" class="brand-logo-svg" style="width: 36px; height: 36px;" aria-hidden="true">
+            <path d="M50 15 L82 25 V55 C82 72 68 85 50 90 C32 85 18 72 18 55 V25 Z" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round" />
+            <path d="M50 32 L75 42 L50 52 L25 42 Z" fill="currentColor" />
+            <path d="M35 46 V57 C35 62 41 65 50 65 C59 65 65 62 65 57 V46" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
+            <circle cx="75" cy="42" r="3.5" fill="currentColor" />
+            <path d="M75 42 V55 C75 57 73 59 71 59" fill="none" stroke="currentColor" stroke-width="3" />
+          </svg>
+        </div>
+        <h2>Select Your Institution</h2>
+        <p>Choose your university or grading scale to load the appropriate grading policy, marks conversion brackets, and official CGPA-to-percentage formula.</p>
+      </div>
+      <div class="welcome-divider"></div>
+      <div class="welcome-grid">
+        <button class="welcome-univ-card" data-univ="lpu">
+          <span class="univ-card-icon">🎓</span>
+          <span class="univ-card-name">LPU</span>
+          <span class="univ-card-full">Lovely Professional University</span>
+        </button>
+        <button class="welcome-univ-card" data-univ="cu">
+          <span class="univ-card-icon">🏫</span>
+          <span class="univ-card-name">Chandigarh Univ</span>
+          <span class="univ-card-full">Chandigarh University (CU)</span>
+        </button>
+        <button class="welcome-univ-card" data-univ="aktu">
+          <span class="univ-card-icon">🔬</span>
+          <span class="univ-card-name">AKTU</span>
+          <span class="univ-card-full">Dr. A.P.J. Abdul Kalam Tech Univ</span>
+        </button>
+        <button class="welcome-univ-card" data-univ="du">
+          <span class="univ-card-icon">📚</span>
+          <span class="univ-card-name">DU</span>
+          <span class="univ-card-full">Delhi University</span>
+        </button>
+        <button class="welcome-univ-card" data-univ="mu">
+          <span class="univ-card-icon">⚓</span>
+          <span class="univ-card-name">Mumbai Univ</span>
+          <span class="univ-card-full">Mumbai University (MU)</span>
+        </button>
+        <button class="welcome-univ-card" data-univ="vtu">
+          <span class="univ-card-icon">⚙️</span>
+          <span class="univ-card-name">VTU</span>
+          <span class="univ-card-full">Visvesvaraya Technological Univ</span>
+        </button>
+        <button class="welcome-univ-card" data-univ="anna">
+          <span class="univ-card-icon">🏛️</span>
+          <span class="univ-card-name">Anna Univ</span>
+          <span class="univ-card-full">Anna University</span>
+        </button>
+        <button class="welcome-univ-card" data-univ="sppu">
+          <span class="univ-card-icon">✒️</span>
+          <span class="univ-card-name">SPPU</span>
+          <span class="univ-card-full">Pune University</span>
+        </button>
+        <button class="welcome-univ-card welcome-univ-card-secondary" data-univ="general_10">
+          <span class="univ-card-icon">🔢</span>
+          <span class="univ-card-name">General 10-Pt</span>
+          <span class="univ-card-full">UGC 10-Point Scale</span>
+        </button>
+        <button class="welcome-univ-card welcome-univ-card-secondary" data-univ="general_4">
+          <span class="univ-card-icon">🇺🇸</span>
+          <span class="univ-card-name">US 4.0 Scale</span>
+          <span class="univ-card-full">Standard 4-Point GPA</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background Glow Effects -->
+  <div class="glow-bg">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+  </div>
+
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 100 100" class="brand-logo-svg" style="width: 26px; height: 26px;" aria-hidden="true">
+            <path d="M50 15 L82 25 V55 C82 72 68 85 50 90 C32 85 18 72 18 55 V25 Z" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round" />
+            <path d="M50 32 L75 42 L50 52 L25 42 Z" fill="currentColor" />
+            <path d="M35 46 V57 C35 62 41 65 50 65 C59 65 65 62 65 57 V46" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
+            <circle cx="75" cy="42" r="3.5" fill="currentColor" />
+            <path d="M75 42 V55 C75 57 73 59 71 59" fill="none" stroke="currentColor" stroke-width="3" />
+          </svg>
+        </div>
+        <div class="logo-text">
+          <h1>UniCalc</h1>
+          <span>Grade Analytics Hub</span>
+        </div>
+      </div>
+      
+      <div class="header-controls">
+        <div class="theme-selector-wrapper univ-selector-wrapper">
+          <label for="theme-palette-select" class="sr-only">Select Color Theme</label>
+          <i data-lucide="palette" class="selector-icon"></i>
+          <select id="theme-palette-select" class="univ-select theme-palette-select" style="min-width: 175px;">
+            <option value="cyberpunk">Aurora Cyber</option>
+            <option value="sunset">Sunset Sapphire</option>
+            <option value="forest">Emerald Forest</option>
+            <option value="velvet">Velvet Orchid</option>
+            <option value="gold">Classic Prestige</option>
+          </select>
+        </div>
+
+        <div class="univ-selector-wrapper">
+          <label for="university-select" class="sr-only">Select University</label>
+          <i data-lucide="school" class="selector-icon"></i>
+          <select id="university-select" class="univ-select">
+            <!-- Dynamically populated, but default hardcoded for accessibility -->
+            <option value="general_10">General 10-Point Scale</option>
+            <option value="lpu">Lovely Professional University (LPU)</option>
+            <option value="cu">Chandigarh University (CU)</option>
+            <option value="aktu">Dr. A.P.J. Abdul Kalam Technical University (AKTU)</option>
+            <option value="du">Delhi University (DU)</option>
+            <option value="mu">Mumbai University (MU)</option>
+            <option value="vtu">Visvesvaraya Technological University (VTU)</option>
+            <option value="anna">Anna University</option>
+            <option value="sppu">Savitribai Phule Pune University (SPPU)</option>
+            <option value="general_4">General US 4-Point Scale</option>
+          </select>
+        </div>
+        
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+          <i data-lucide="moon" class="theme-icon-dark"></i>
+          <i data-lucide="sun" class="theme-icon-light"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Grid Layout -->
+    <main class="app-main-grid">
+      
+      <!-- Left Column: University Profile Hub -->
+      <aside class="sidebar-panel">
+        <div class="card university-profile-card">
+          <div class="card-header">
+            <h2 class="card-title">
+              <i data-lucide="info"></i>
+              University Profile
+            </h2>
+          </div>
+          <div class="card-body">
+            <div class="univ-info-header">
+              <h3 id="univ-name">General 10-Point Scale</h3>
+              <p id="univ-desc">Standard choice-based credit grading system used by many universities globally.</p>
+              <button id="change-univ-btn" class="btn btn-primary-outline btn-sm change-univ-btn" style="margin-top: 1.25rem; width: 100%;">
+                <i data-lucide="school"></i>
+                Select / Change Institution
+              </button>
+            </div>
+            
+            <div class="divider"></div>
+
+            <div class="formula-box">
+              <span class="formula-label">Percentage Formula:</span>
+              <div id="univ-formula" class="formula-math">Percentage = CGPA × 9.5</div>
+            </div>
+
+            <div class="divider"></div>
+            
+            <h4 class="section-sub-title">Grading Scale Reference</h4>
+            <div class="table-container">
+              <table class="grading-table">
+                <thead>
+                  <tr>
+                    <th>Grade</th>
+                    <th>Interpretation</th>
+                    <th>Grade Points</th>
+                  </tr>
+                </thead>
+                <tbody id="grading-scale-tbody">
+                  <!-- Dynamically populated via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Right Column: Interactive Calculators & Dashboard -->
+      <section class="main-content-panel">
+        
+        <!-- Calculator Tab Navigation -->
+        <nav class="calculator-tabs" role="tablist">
+          <button id="tab-sgpa" class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-sgpa">
+            <i data-lucide="layout-grid"></i>
+            SGPA / TGPA Calculator
+          </button>
+          <button id="tab-cgpa" class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-cgpa">
+            <i data-lucide="trending-up"></i>
+            CGPA Calculator
+          </button>
+          <button id="tab-converter" class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-converter">
+            <i data-lucide="refresh-cw"></i>
+            Percentage Converter
+          </button>
+        </nav>
+
+        <!-- Dynamic Panels Container -->
+        <div class="calculator-panels">
+          
+          <!-- SGPA/TGPA Calculator Panel -->
+          <div id="panel-sgpa" class="tab-panel active" role="tabpanel">
+            <div class="card">
+              <div class="card-header card-header-flex">
+                <div>
+                  <h2 class="card-title">Calculate Semester SGPA</h2>
+                  <p class="card-subtitle">Enter your course details, credits, and grade for the current term.</p>
+                </div>
+                <div class="header-actions">
+                  <button id="clear-sgpa" class="btn btn-outline btn-sm">
+                    <i data-lucide="trash-2"></i>
+                    Clear All
+                  </button>
+                </div>
+              </div>
+              
+              <div class="card-body">
+                <div class="subjects-header">
+                  <div class="col-name">Subject / Course Name</div>
+                  <div class="col-credits">Credits</div>
+                  <div class="col-marks">Marks (0-100)</div>
+                  <div class="col-grade-badge">Auto Grade</div>
+                  <div class="col-action"></div>
+                </div>
+
+                <div id="subjects-container" class="subjects-list">
+                  <!-- Dynamic rows go here -->
+                </div>
+
+                <div class="calculator-actions-row">
+                  <button id="add-subject-btn" class="btn btn-primary-outline add-row-btn">
+                    <i data-lucide="plus"></i>
+                    Add Subject Row
+                  </button>
+                  <button id="calculate-sgpa-btn" class="btn btn-success calculate-btn">
+                    <i data-lucide="calculator"></i>
+                    Calculate TGPA / SGPA
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CGPA Calculator Panel -->
+          <div id="panel-cgpa" class="tab-panel" role="tabpanel">
+            <div class="card">
+              <div class="card-header card-header-flex">
+                <div>
+                  <h2 class="card-title">Calculate Cumulative CGPA</h2>
+                  <p class="card-subtitle">Enter your semester-wise SGPA scores or accumulate overall performance.</p>
+                </div>
+                <div class="header-actions">
+                  <div class="cgpa-mode-toggle">
+                    <button id="cgpa-mode-sem" class="btn btn-sm btn-toggle-active">Semester-wise</button>
+                    <button id="cgpa-mode-raw" class="btn btn-sm">Summary Input</button>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="card-body">
+                <!-- Semester-wise Inputs -->
+                <div id="cgpa-sem-section">
+                  <div class="semesters-header">
+                    <div class="col-sem">Semester</div>
+                    <div class="col-sgpa">SGPA / TGPA</div>
+                    <div class="col-sem-credits">Credits</div>
+                    <div class="col-action"></div>
+                  </div>
+                  
+                  <div id="semesters-container" class="semesters-list">
+                    <!-- Dynamic semester rows go here -->
+                  </div>
+
+                  <div class="calculator-actions-row">
+                    <button id="add-semester-btn" class="btn btn-primary-outline add-row-btn">
+                      <i data-lucide="plus"></i>
+                      Add Semester Row
+                    </button>
+                    <button id="calculate-cgpa-btn" class="btn btn-success calculate-btn">
+                      <i data-lucide="calculator"></i>
+                      Calculate Cumulative CGPA
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Raw Summary Inputs -->
+                <div id="cgpa-raw-section" class="hidden">
+                  <div class="raw-grid">
+                    <div class="form-group">
+                      <label for="prev-cgpa" class="form-label">Existing CGPA</label>
+                      <input type="number" id="prev-cgpa" class="form-control" placeholder="e.g. 8.5" min="0" max="10" step="0.01">
+                    </div>
+                    <div class="form-group">
+                      <label for="prev-credits" class="form-label">Total Credits Before Current Semester</label>
+                      <input type="number" id="prev-credits" class="form-control" placeholder="e.g. 64" min="0" step="0.5">
+                    </div>
+                    <div class="form-group">
+                      <label for="curr-sgpa" class="form-label">Current Semester SGPA / TGPA</label>
+                      <input type="number" id="curr-sgpa" class="form-control" placeholder="e.g. 9.1" min="0" max="10" step="0.01">
+                    </div>
+                    <div class="form-group">
+                      <label for="curr-credits" class="form-label">Current Semester Credits</label>
+                      <input type="number" id="curr-credits" class="form-control" placeholder="e.g. 20" min="0" step="0.5">
+                    </div>
+                  </div>
+                  <div class="raw-actions-row" style="margin-top: 1.5rem; display: flex; justify-content: flex-end;">
+                    <button id="calculate-cgpa-raw-btn" class="btn btn-success calculate-btn">
+                      <i data-lucide="calculator"></i>
+                      Calculate Cumulative CGPA
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Standalone Converter Panel -->
+          <div id="panel-converter" class="tab-panel" role="tabpanel">
+            <div class="card">
+              <div class="card-header">
+                <h2 class="card-title">Percentage & GPA Converter</h2>
+                <p class="card-subtitle">Quickly perform two-way conversions between percentage marks and GPAs.</p>
+              </div>
+              <div class="card-body">
+                <div class="converter-box-grid">
+                  <!-- GPA to Percentage -->
+                  <div class="converter-card">
+                    <h3 class="converter-card-title">GPA to Percentage</h3>
+                    <div class="form-group">
+                      <label for="conv-gpa-input" class="form-label">Enter GPA / CGPA Value</label>
+                      <div class="input-with-badge">
+                        <input type="number" id="conv-gpa-input" class="form-control" placeholder="e.g., 8.50" min="0" max="10" step="0.01">
+                        <span class="input-badge" id="conv-gpa-max">/ 10</span>
+                      </div>
+                    </div>
+                    <div class="converter-arrow">
+                      <i data-lucide="chevrons-down"></i>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">Equivalent Percentage</label>
+                      <div class="result-display-field" id="conv-percentage-result">0.00%</div>
+                    </div>
+                  </div>
+
+                  <!-- Percentage to GPA -->
+                  <div class="converter-card">
+                    <h3 class="converter-card-title">Percentage to GPA</h3>
+                    <div class="form-group">
+                      <label for="conv-pct-input" class="form-label">Enter Percentage (%)</label>
+                      <div class="input-with-badge">
+                        <input type="number" id="conv-pct-input" class="form-control" placeholder="e.g., 85.00" min="0" max="100" step="0.01">
+                        <span class="input-badge">%</span>
+                      </div>
+                    </div>
+                    <div class="converter-arrow">
+                      <i data-lucide="chevrons-down"></i>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">Equivalent GPA / CGPA</label>
+                      <div class="result-display-field" id="conv-gpa-result">0.00</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Dashboard / Results Panel -->
+        <div class="dashboard-results-container">
+          
+          <div class="card results-card">
+            <div class="card-body results-body-grid">
+              
+              <!-- Circular Gauge Display -->
+              <div class="results-visual-container">
+                <div class="radial-gauge-wrapper">
+                  <svg class="radial-gauge" viewBox="0 0 120 120">
+                    <circle class="gauge-bg" cx="60" cy="60" r="50" />
+                    <circle id="gauge-progress" class="gauge-value" cx="60" cy="60" r="50" style="stroke-dasharray: 314.16; stroke-dashoffset: 314.16;" />
+                  </svg>
+                  <div class="gauge-content">
+                    <span id="score-display-val" class="score-value">0.00</span>
+                    <span id="score-display-max" class="score-max">/ 10.00</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Metrics details -->
+              <div class="results-metrics">
+                <div class="active-metric-title">
+                  <span class="badge" id="calc-mode-badge">SGPA</span>
+                  <h3>Calculation Summary</h3>
+                </div>
+
+                <div class="metrics-grid">
+                  <div class="metric-item">
+                    <span class="metric-label">Total Credits</span>
+                    <span id="total-credits-val" class="metric-value-large">0.0</span>
+                  </div>
+                  <div class="metric-item">
+                    <span class="metric-label">Percentage Equivalent</span>
+                    <span id="pct-val" class="metric-value-large">0.00%</span>
+                  </div>
+                  <div class="metric-item">
+                    <span class="metric-label">Performance Rating</span>
+                    <span id="rating-val" class="metric-value-large">-</span>
+                  </div>
+                  <div class="metric-item">
+                    <span class="metric-label">Honor Status</span>
+                    <span id="honor-val" class="metric-value-large">-</span>
+                  </div>
+                </div>
+
+                <div class="results-actions">
+                  <button id="download-pdf-btn" class="btn btn-success">
+                    <i data-lucide="download"></i>
+                    Download PDF Report
+                  </button>
+                  <button id="export-csv-btn" class="btn btn-outline">
+                    <i data-lucide="file-spreadsheet"></i>
+                    Export CSV
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- SGPA/CGPA Trends (Visual Chart Card) -->
+        <div id="chart-card-wrapper" class="card chart-card hidden">
+          <div class="card-header">
+            <h2 class="card-title">
+              <i data-lucide="bar-chart-3"></i>
+              Semester Progress Trend
+            </h2>
+            <p class="card-subtitle">Visual tracking of your SGPA and CGPA trajectory across terms.</p>
+          </div>
+          <div class="card-body">
+            <div class="chart-container">
+              <canvas id="trends-chart" width="800" height="280"></canvas>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </main>
+
+    <!-- FAQ / educational section -->
+    <section class="educational-section">
+      <h2 class="section-title">Frequently Asked Questions & Grading Information</h2>
+      
+      <div class="accordion-container">
+        
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>What is the difference between SGPA, TGPA, and CGPA?</span>
+            <i data-lucide="chevron-down" class="accordion-icon"></i>
+          </button>
+          <div class="accordion-content">
+            <p>
+              <strong>SGPA (Semester Grade Point Average)</strong> and <strong>TGPA (Term Grade Point Average)</strong> measure a student's academic performance in a single semester/term. It is calculated by dividing the sum of the credit points earned in all courses by the total number of credits registered.
+            </p>
+            <p>
+              <strong>CGPA (Cumulative Grade Point Average)</strong> measures a student's cumulative academic performance across all completed semesters in a program. It is computed as the weighted average of all semesters' SGPA/TGPA based on their respective credits.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>How does Relative Grading work at LPU?</span>
+            <i data-lucide="chevron-down" class="accordion-icon"></i>
+          </button>
+          <div class="accordion-content">
+            <p>
+              Lovely Professional University (LPU) uses <strong>Relative Grading</strong> for most courses. Rather than matching absolute mark ranges (like 90%+ is an A), grade cutoffs are computed based on the cohort's average marks and standard deviation.
+            </p>
+            <p>
+              If an exam is extremely difficult, the class average goes down, and a student scoring 70% might still receive an 'O' (Outstanding) or 'A+' grade. Conversely, in a very easy exam where the average is 90%, scoring 85% might result in a lower grade like 'B'. The grade point values, however, remain fixed (O = 10, A+ = 9, A = 8, etc.).
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>How is CGPA converted to percentage at AKTU?</span>
+            <i data-lucide="chevron-down" class="accordion-icon"></i>
+          </button>
+          <div class="accordion-content">
+            <p>
+              Dr. A.P.J. Abdul Kalam Technical University (AKTU) uses a specific formula to convert CGPA to percentage, defined by their academic council:
+            </p>
+            <p class="math-center">
+              <code>Percentage (%) = (CGPA × 10) - 7.5</code>
+            </p>
+            <p>
+              For example, if your CGPA is 8.25 at AKTU, your equivalent percentage is <code>(8.25 × 10) - 7.5 = 75.00%</code>.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>What are the passing criteria and Honours rules for these universities?</span>
+            <i data-lucide="chevron-down" class="accordion-icon"></i>
+          </button>
+          <div class="accordion-content">
+            <p>
+              Most universities under UGC CBCS require a minimum Grade Point of <strong>4.0</strong> (Grade D or P) in each subject to pass. A grade point of 0 (E, F, or U) is considered a fail or reappear paper.
+            </p>
+            <p>
+              To graduate with **First Class with Distinction** or **Honours**, universities like AKTU and LPU generally require maintaining a CGPA of <strong>7.5 or above</strong> without any carryover papers/backlogs during the entire program.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>&copy; 2026 UniCalc. Designed for students to track academic growth.</p>
+      <p class="footer-note">Note: Percentage conversion formulas and grade thresholds are based on published guidelines. Refer to your student handbook for the latest revisions.</p>
+    </footer>
+  </div>
+
+  <!-- Print Transcript View (Hidden by default, used for PDF creation) -->
+  <div id="print-area" class="print-only">
+    <div class="print-header">
+      <h2>UniCalc Academic Performance Report</h2>
+      <p id="print-date">Generated on: --/--/----</p>
+    </div>
+    
+    <div class="print-meta">
+      <p><strong>Selected University System:</strong> <span id="print-univ-name">--</span></p>
+      <p><strong>Calculation Mode:</strong> <span id="print-calc-mode">--</span></p>
+    </div>
+
+    <div class="print-results">
+      <div class="print-score-box">
+        <span class="print-score-label">GPA Score</span>
+        <span id="print-score-val" class="print-score-val">0.00 / 10.00</span>
+      </div>
+      <div class="print-score-box">
+        <span class="print-score-label">Percentage</span>
+        <span id="print-score-pct" class="print-score-val">0.00%</span>
+      </div>
+    </div>
+
+    <div class="print-details">
+      <p><strong>Total Credits Earned:</strong> <span id="print-total-credits">0.0</span></p>
+      <p><strong>Academic Standing:</strong> <span id="print-rating">--</span></p>
+      <p><strong>Honours Eligibility:</strong> <span id="print-honours">--</span></p>
+    </div>
+
+    <div class="print-table-section">
+      <h3>Subject-wise / Semester-wise Breakdown</h3>
+      <table class="print-table">
+        <thead id="print-table-thead">
+          <!-- Populated by JS -->
+        </thead>
+        <tbody id="print-table-tbody">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <footer class="print-footer">
+      <p>This is a student-generated report using the UniCalc grading assistant tool. Verify all grades against official university transcripts.</p>
+    </footer>
+  </div>
+
+  <!-- Custom JavaScript Files -->
+  <script src="db.js"></script>
+  <script src="chart.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
